@@ -1,1 +1,2 @@
 Bei diesem Projekt handelt es sich um ein kleines Tic Tac Toe-Spiel, welches ich für das Studium coden musste. Weiterhin finden sich hier einige Textdateien, welche dazu benutzt werden, um verschiedene Aktionen in GitHub zu testen. 
+Änderungen an Readme

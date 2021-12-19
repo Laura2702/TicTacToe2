@@ -1,0 +1,51 @@
+<project basedir="." name="LAURAS-BUILD" default="run">
+	<property name="src.dir" location="." />
+	<property name="build.dir" location="." />
+	<property name="dist.dir" location="." />
+	<property name="docs.dir" location="." />
+	
+	
+	<target name="ALL">
+		<echo>
+			Hallo Leser
+		</echo>
+		<buildnumber file="mybuild.number"/>
+		<copy file="myfile.txt" tofile="mycopy.txt"/>
+		<echo>
+			Copied!
+		</echo>
+		<delete file="./mycopy.txt" />
+		<mkdir dir="${dist}/testdir"/>
+		<delete dir="${dist}/testdir" />
+		<move file="myfile.txt" todir="./moveto" />
+		<copy file="./moveto/myfile.txt" tofile="myfile.txt"/>
+		<zip destfile="all.zip"
+		     basedir="."/>
+		<tstamp>
+		    <format property="TODAY_DE" pattern="d-MMMM-yyyy" locale="de,DE"/>
+		</tstamp>
+	</target>
+	
+	
+	<target name="compile" depends="init">
+		<javac srcdir="."/>
+	</target>
+	
+	<target name="jar" depends="compile">
+		<jar destfile="tictactoe.jar" basedir="." includes="**/*.class" />
+	</target>
+	
+	<target name="run" depends="jar">
+    	<java classname="tictactoe" classpath="tictactoe.jar" fork="true" />
+  	</target>	
+	
+	<target name="init" depends="ALL">
+		<tstamp />
+	</target>
+	
+	<target name="clean">
+		<delete dir="./${dist}" />
+	</target>
+	
+
+</project>
